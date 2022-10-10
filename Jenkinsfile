@@ -20,7 +20,7 @@ pipeline {
         script {
 
           openshift.withCluster() { 
-		openshift.withProject("janlerski-dev") { 
+		openshift.withProject("jenkins-tutorial") { 
 		   def buildConfigExists = openshift.selector("bc", "codelikethewind").exists() 
 		   if(!buildConfigExists){ 
 		      openshift.newBuild("--name=codelikethewind", "--docker-image=registry.redhat.io/jboss-eap-7/eap74-openjdk8-openshift-rhel7", "--binary") 
@@ -36,7 +36,7 @@ pipeline {
         script {
 
           openshift.withCluster() {
-  		openshift.withProject("janlerski-dev") { 
+  		openshift.withProject("jenkins-tutorial") { 
     		def deployment = openshift.selector("dc", "codelikethewind") 
     
    		if(!deployment.exists()){ 
